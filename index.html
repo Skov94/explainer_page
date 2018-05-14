@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Explainer page</title>
+</head>
+<body>
+<h1>Explainer page </h1>
+<h2>Motivation</h2>
+<ul>
+  <li><strong>The dataset:</strong> The used dataset is Citi bike trip data, for trips started in Jersey City in 2017. The dataset was downloaded from the <a href="https://www.citibikenyc.com/system-data">Citi bike NYC webpage</a>, and includes the following variables (only the ones of interest for our analysis are mentioned):
+    <div style="height: 10px;"></div>
+	<ul>
+		<li>Start time and date</li> 
+		<li>Start station name</li> 
+		<li>End station name</li>
+		<li>Station Lat/Long</li>
+		<li>Gender (zero:unknown, 1:male, 2:female)</li>
+		<li>Year of birth</li>
+	</ul>
+  </li> 
+   <div style="height: 10px;"></div>
+   <li><strong>The goal for the end user's experience:</strong> The created story seeks to help the user explore certain patterns and trends in city biking. More specifically the story wants to help the user explore who uses the bikes and what they use them for, by looking at gender, age, certain stations/routes and certain times (of the year, the week or the day). This information can then be used to e.g. conclude whether certain user segments uses the bikes for transportion to/from work or for weekend outings.</li>
+   <div style="height: 10px;"></div>
+   <li><strong>Why this dataset was chosen:</strong> The 2017 Jersey citi bike dataset was chosen, as Jersey City is a relatively large biking city. Jersey city has 50 citi bike stations, where the bike can be picked up, and then left at any of the 750 citi bike stations in Jersey City, Manhatten, Brooklyn or Queens. As mentioned above, the goal is to help the user explore certain patterns (also over the year) in city biking, and it was therefore chosen to only focus on trips starting in Jersey City, as this made it possible to consider data from an entire year, and still obtain fast, interactive visualizations. As a comparison the used dataset consists of 294.929 trips for the entire year whilst 726.677 trips were made in NYC in January, 2017.</li>
+</ul>
+
+<h2>Basic Stats</h2>
+
+<ul>
+  <li><strong>Choices in data cleaning and preprocessing:</strong> The first preprocessing steps were made in Excel and consisted of converting the variable "Year of birth" to "Age", and saving the variable "Start time and date" as 3 variables stating the starting month, weekday and hour. The subsequent data cleaning and preprocessing was done in an iPython jupyter notebook. 
+	<div style="height: 10px;"></div>
+	It was in the data cleaning process chosen to remove the trips were the gender and age was unknown (in most cases both are unknown simultanously), as this is an important part of our analysis. Additionally it is chosen to remove trips were the user has stated that they are 118 or 131 years old, as this probably is some sort of default lowest possible value that they have just chosen. It is considered reasonable to remove all of these data points as it only reduces the dataset from 294.929 trips to 273.987.
+	<div style="height: 10px;"></div>
+	Furthermore, the dataset is used to create 2 new datasets, one containing all start stations (Station name and Lat/Long) and one containing all stations, which is needed for plotting the stations on a map.
+
+  </li> 
+     <div style="height: 10px;"></div>
+  <li><strong>Dataset stats and key points/plots from exploratory data analysis:</strong> In the exploratory analysis it is found that the citi bikes are mostly used by males in their 30s, which can be seen in the snippet below, which is computed by using iPythons <i>describe()</i>:
+		<div style="height: 10px;"></div>
+		<img src="stats.png" alt="Statistics" width="50%">
+		<div style="height: 10px;"></div>
+		By plotting the number of started trips on certain months, weekdays and time of day we obtain the distributions seen below. A clear pattern can be seen in the distribution over hours, showing how people mostly use the bikes between 7-9 and 17-19 (and on weekdays in the warmer months).
+		<div style="height: 10px;"></div>
+		<img src="month_day_hour.png" alt="Number of started trips at given month, day and hour" width="50%">
+		<div style="height: 10px;"></div>
+		This pattern becomes even more clear when only looking at the distribution over hours on weekdays, and disappears when only looking at weekends, indicating that people use the bikes for transportation to from work: </br>
+		Hourly distribution on weekdays:
+		<div style="height: 10px;"></div>
+		<img src="hour_weekday.png" alt="Number of started trips at given month, day and hour" width="50%"> </br>
+		Hourly distribution on weekends:
+		<div style="height: 10px;"></div>
+		<img src="hour_weekend.png" alt="Hourly distribution on weekends" width="50%">
+		<div style="height: 10px;"></div>
+		When only considering the gender, the distributions seen above look similar, but if also including age many different distributions can be found. As an example it can be found that young males seem to follow the to/from work pattern more clearly than young females: 
+		</br>
+		Males, 17-25 years: 
+		</br>
+		<img src="young_male.png" alt="young males" width="50%">
+		</br>
+		Females, 17-25 years: 
+		</br>
+		<img src="young_female.png" alt="young females" width="50%">
+		<div style="height: 10px;"></div>
+		It is also found, when people mainly use certain stations. And again a clear pattern tells us that people head out to work in the morning and goes back home in the evening: 
+		</br>
+		Time 6-9, starting station: 
+		</br>
+		<img src="stations_start_morning.png" alt="start morning" width="50%">
+		</br>
+		Time 6-9, ending station: 
+		</br>
+		<img src="stations_end_morning.png" alt="end morning" width="50%">
+		</br>
+		Time 16-19, starting station: 
+		</br>
+		<img src="stations_start_evening.png" alt="start evening" width="50%">
+		</br>
+		Time 16-19, ending station: 
+		</br>
+		<img src="stations_end_evening.png" alt="end evening" width="50%">
+
+
+
+
+  
+  </li>
+</ul>
+
+<h2>Genre</h2>
+<p> The main visualization in the created narrative is of the genre partioned poster, which is set up in an article written in a Martini glass structure, as described in [1]. </p>
+
+<ul>
+  <li><strong>Tools used from each of the 3 categories of Visual Narrative:</strong> 
+		
+		<ul>
+			<li><strong>Visual structuring:</strong> Consistent Visual Platform </li> 
+			<li><strong>Highlighting:</strong> Feature Distinction</li>
+			<li><strong>Transition guidance:</strong> Object Continuity</li>
+		</ul>
+  
+  </li> 
+  	<div style="height: 10px;"></div>
+  <li><strong>Tools used from each of the 3 categories of Narrative Structure:</strong> 
+		
+			<ul>
+				<li><strong>Ordering:</strong> User Directed Path</li> 
+				<li><strong>Interactivity:</strong> Hover Highlighting / Details, Filtering / Selection, Stimulating Default Views</li>
+				<li><strong>Messaging:</strong> Captions / Headlines, Accompanying Article (Martini Glass Structure, i.e. introducing user and then letting them explore the data for themselves, i.e. no conclusion), Introductory Text</li>
+			</ul>
+  
+  </li>
+</ul>
+
+<h2>Visualizations</h2>
+
+<ul>
+  <li><strong>The chosen visualizations:</strong> The first part is a box, that makes it possible for the user to only see the data based on certain user segments (gender, age). This selection affects both visualizations. The first visualization consists of a map of Jersey City and 3 bar charts, which are all brushable - when brushing either one, both visualizations will update. The start stations are plotted on the map, and their size is relative to the number of trips starting at that station according to the given selection. Details-on-demand are given when hovering over a station, which states how many trips started there.
+  <div style="height: 10px;"></div>
+  The bar charts indicate how many trips started at any given month, weekday and hour for the given selection.
+  <div style="height: 10px;"></div>
+  The second visualization consists of a map of Jersey City and parts of Manhatten and Brooklyn. All stations are plotted on the map. The stations that are on the 100 most popular routes for the given selection, are colorized based on whether the station mostly is a pickup of dropoff station. These stations are also sized relative to the number of trips starting and ending there. Additionally the 25 most popular routes are visualized as lines between the pickup and dropoff stations. Details-on-demand are given when hovering over any station or route. When hovering over a station the number of pickups and dropoffs, based on the 100 most popular routes are stated. When hovering over a route the number of trips in either direction is stated. Note that since the number of trips are computed based on the 100 most popular routes, one can run in to events where there e.g. are 1000 trips from Sip Ave to Oakland Ave, but 0 from Oakland Ave to Sip Ave, simply because the route Oakland Ave &#8594; Sip Ave is not on the top 100 of routes. Also note that since the map in the first visualization only contains start stations, brushing a single station will mean that all routes will start with this station, and all other stations will automatically only have dropoffs.   
+  </li> 
+     <div style="height: 10px;"></div>
+  <li><strong>Why these visualizations are right for telling the story:</strong> The selection box makes it possible for the user to explore different trends in city biking, based on age and gender. The first visualization is perfect for helping the user figure out what people are using the bikes for. The user could e.g. brush the weekday chart on monday-friday to explore the hourly distribution on these days, and on the map see which stations are mostly used in this timeframe. Additionally the user could then brush the hour chart on e.g. 7-10 to explore which stations are mostly used in this timeframe. Having done this the user could go to the second visualization to see the flow of the routes, and the opposite flow could be seen by going back to the hourly chart and changing it to 16-20, where the bikers are going back home.</li>
+</ul>
+
+<h2>Discussion</h2>
+
+<ul>
+  <li><strong>What went well:</strong> Setting up and using crossfilter, which makes it possible to filter the data based on many different variables went well, and it was possible to create visualizations where the interactivity/brushing responds relatively fast (extremely fast when only including the first visualization). </li> 
+  <li><strong>What is missing/could be improved:</strong> In a later iteration of exploratory analysis it was found that the users with unknown gender and age seems to ride more in the weekends and more equally distributed over the day. This might indicate that these users are not annual members that use the bikes for commutes, but might just be interested in riding a single ride, and therefore do not want to bother including age and gender. For future work this data should therefore also be included, as this would unveil different users, such as tourists. This could e.g. be included as a "unknown gender" and "unknown age"-checkmark.
+  <div style="height: 10px;"></div>
+  One could also consider to let the second visualization be a Chord diagram, as this neatly would illustrate the flow of the routes. Although one would have to consider whether it makes just as much sense if no additional map is included.
+   <div style="height: 10px;"></div>
+
+	Additional future work includes:
+	<ul>
+		<li>Making it possible to start a brushing session on top of a station in the map, so that it is easier to select single stations</li> 
+		<li>Optimizing the code, so that it in the second visualization is possible to do the computations based on all routes, so that all stations are relatively sized and coloured, making the flow of the routes more clear</li>
+	</ul>
+	
+
+  </li>
+</ul>
+
+<h2> References </h2>
+
+<p> [1]:  &emsp; &emsp; Segel, E. and Heer, J. (2010): "Narrative Visualization: Telling Stories with Data", IEEE Transactions on Visualization and Computer Graphics 16(6): 1139-1148. </p>
+
+</body>
+</html>
